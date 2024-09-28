@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var labelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
                        
                        // UI güncellemelerini ana thread'de yap
                        DispatchQueue.main.async {
-                          
+                           self.labelText.text = headings.first
                        }
                    } catch {
                        print("Error decoding JSON: \(error)")
