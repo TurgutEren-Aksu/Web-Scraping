@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        fetchData()
     }
     func fetchData(){
            guard let url = URL(string: "http://127.0.0.1:5000/data") else { return }
@@ -26,9 +26,9 @@ class ViewController: UIViewController {
                    do {
                        // JSON verisini parse et
                        let headings = try JSONDecoder().decode([String].self, from: data)
-                       print(headings) // Başlıkları konsolda göster
+                       print(headings)
                        
-                       // UI güncellemelerini ana thread'de yap
+                       
                        DispatchQueue.main.async {
                            self.labelText.text = headings.first
                        }
